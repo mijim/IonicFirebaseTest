@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Firebase Test
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+        <ion-item>
+          <ion-label color="primary">Nombre</ion-label>
+          <ion-input #nombre placeholder="Introduce el nombre..."></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label color="primary">Apellidos</ion-label>
+          <ion-input #apellidos placeholder="Introduce los apellidos"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label color="number">Edad</ion-label>
+          <ion-input #edad placeholder="Introduce la edad"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label color="primary"></ion-label>
+            <ion-select #sexo placeholder="Genero">
+              <ion-option value="Mujer">Mujer</ion-option>
+              <ion-option value="Hombre">Hombre</ion-option>
+            </ion-select>
+        </ion-item>
+      </ion-list>
+      <button ion-button on-click="addUser(nombre,apellidos,edad,sexo)" block large>Add user</button>
+
+  Usuarios:
+  <ion-item *ngFor="let user of users | async">
+    <p>
+      Nombre: {{user.nombre}}
+    </p>
+    <p>
+      Apellido: {{user.apellido}}
+    </p>
+    <p>
+      Edad: {{user.edad}}
+    </p>
+    <p>
+      Sexo: {{user.sexo}}
+    </p>
+    <button ion-button on-click="deleteUser(user)" block color="danger" large>Eliminar</button>
+  </ion-item>
+</ion-content>
